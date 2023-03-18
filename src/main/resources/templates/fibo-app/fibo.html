@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fibo-app/fragments/header :: header">
+<head th:insert="~{fibo-app/fragments/header :: header}">
 
 </head>
 <body class="bg-dark text-white">
 
-<div th:replace="fibo-app/fragments/topmenu :: topmenu"></div>
+<div th:insert="~{fibo-app/fragments/topmenu :: topmenu}"></div>
 
 <div class="container">
 
@@ -33,7 +33,6 @@
             </thead>
             <tbody>
             <tr th:each="mapEntry: ${allHistory}">
-<!--                <td th:text="${mapEntry.key}"></td>-->
                 <td th:each="item : ${mapEntry.key}" th:text="${item.key}"></td>
                 <td th:each="item : ${mapEntry.key}" th:text="${item.value}"></td>
                 <td th:each="item : ${mapEntry.value}" th:text="${item.key}"></td>
@@ -144,6 +143,6 @@
 
 </div>
 
-<div th:replace="fibo-app/fragments/footer :: footer">&copy; 2016 The Static Templates</div>
+<div th:insert="~{fibo-app/fragments/footer :: footer}">&copy; 2016 The Static Templates</div>
 </body>
 </html>

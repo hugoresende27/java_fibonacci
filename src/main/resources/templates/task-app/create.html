@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fibo-app/fragments/header :: header">
+<head th:insert="~{fibo-app/fragments/header :: header}">
 
 </head>
 <body class="bg-dark text-white">
 
-<div th:replace="fibo-app/fragments/topmenu :: topmenu"></div>
+<div th:insert="~{fibo-app/fragments/topmenu :: topmenu}"></div>
 <div class="container">
 
     <form method="POST" action="/task-create" th:object="${task}">
@@ -27,6 +27,6 @@
 
 
 </div>
-<div th:replace="fibo-app/fragments/footer :: footer">&copy; 2016 The Static Templates</div>
+<div th:insert="~{fibo-app/fragments/footer :: footer}">&copy; 2016 The Static Templates</div>
 </body>
 </html>

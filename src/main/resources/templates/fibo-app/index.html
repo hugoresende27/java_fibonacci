@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fibo-app/fragments/header :: header">
+<head th:insert="~{fibo-app/fragments/header :: header}">
 
 </head>
 <body class="bg-dark text-white">
 
-<div th:replace="fibo-app/fragments/topmenu :: topmenu"></div>
+<!--<div th:replace="fibo-app/fragments/topmenu :: topmenu"></div>-->
+<div th:insert="~{fibo-app/fragments/topmenu :: topmenu}"></div>
 
 <div class="container">
     <div class="hero-unit">
 
         <p>
-            Welcome to this simple JAVA app produce by hugo resende
+            Welcome to this simple JAVA app produce by hugo resende v0
         </p>
         <p>
             <a href="/signup" th:href="@{/signup}" class="btn btn-large btn-success">Sign up</a>
@@ -21,6 +22,6 @@
 
 
 </div>
-<div th:replace="fibo-app/fragments/footer :: footer">&copy; 2016 The Static Templates</div>
+<div th:insert="~{fibo-app/fragments/footer :: footer}">&copy; 2016 The Static Templates</div>
 </body>
 </html>
