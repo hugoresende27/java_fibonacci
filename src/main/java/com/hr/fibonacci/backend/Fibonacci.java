@@ -19,25 +19,31 @@ public class Fibonacci {
 
     public static long[] fibonacciCache;
 
+
     public Fibonacci() {
 
     }
 
     public static void main(String[] args) {
 
-        int start = 0;
-        int end = 10;   //max of long for fibonacci element is 90 , 9 zilion something
+        int start = 40;
+        int end = 60;   //max of long for fibonacci element is 90 , 9 zilion something
 
 //        fibonacciCache = new long[end + 1];   //save precious number of fibonacci seq in a var named cache,
                                               //always last number + 1
 
-        printFibo(start, end);
+        System.out.println("INDEXES: "+start+": "+end+ " -> " + printFiboIndexes(start, end));
+        System.out.println("MIN-MAX: "+start+": "+end + " -> " +printFiboLimits(start, end));
 
     }
 
     /**
      * need a base case to stop execution
      * n(0) = 0 and n(1) = 1
+     * An alternate way to print the Fibonacci series  using memoization :
+     * In above example, Its time complexity is O(2n)  which can reduce to O(n)
+     * using the memoization technique it will help to optimize recursion method.
+     * This is because the function computes each Fibonacci number only once and stores it in the array.
      */
     public static long fibonnacci(int n){
         if ( n <= 1){
@@ -60,6 +66,12 @@ public class Fibonacci {
      *  a assumes b value
      *  b assumes c value
      *  b is always the end of the fibo sequente atm
+     *   Initialize the first and second numbers to 0 and 1.
+     *   Following this, we print the first and second numbers.
+     *   Then we send the flow to the iterative while loop
+     *   where we get the next number by adding the previous two numbers and simultaneously
+     *   we swap the first number with the second and the second with the third.
+     *   Below is the implementation of the above approach:
      */
     public static BigInteger fibonnacci2(int n) {
         BigInteger a = BigInteger.valueOf(0);
@@ -82,15 +94,52 @@ public class Fibonacci {
 
     public static void printFibo(int start, int end){
         for (int i = start ; i <= end ; i++){
-//            System.out.println(fibonnacci(i));
             System.out.println(fibonnacci2(i)); //fibonacci2 uses a loop to return max fibo value of seq
         }
     }
-    public static String printFibo2(int start, int end) {
+
+
+
+    /*
+        print fibonacci sequence between indexes passed
+     */
+    public static String printFiboIndexes(int start, int end) {
         StringBuilder res = new StringBuilder();
         for (int i = start; i <= end; i++) {
 
             res.append(" ").append(fibonnacci2(i)).append(" "); //fibonacci2 uses a loop to return max fibo value of seq
+
+        }
+
+        return res.toString();
+    }
+
+
+    /*
+        print fibonacci sequence between max and min limits passed
+     */
+    public static String printFiboLimits(int start, int end) {
+        StringBuilder res = new StringBuilder();
+
+        //loop fibonacci sequence between 0 and 1000
+        for (int i = 0; i <= 1000; i++) {
+
+            //init BigInts
+            BigInteger fiboVal = fibonnacci2(i);
+            BigInteger s = BigInteger.valueOf(start);
+            BigInteger e = BigInteger.valueOf(end);
+
+            //BigInts compareTo ( > 0 bigger, 0 equal, < 0 smaller)
+            int compareValueS = fiboVal.compareTo(s);
+            int compareValueE = fiboVal.compareTo(e);
+
+            //if start bigger then fibo val and end smaller then fibo val
+            if (compareValueS > 0 && compareValueE < 0){
+                //append fibo values between limits
+                res.append(" ").append(fiboVal).append(" ");
+            }
+
+
         }
 
         return res.toString();

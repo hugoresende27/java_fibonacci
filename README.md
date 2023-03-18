@@ -11,3 +11,4 @@
 # Notes
  - resources/static for assets like css and js
  - thymeleaf iteration th:each (Iterable, Map, arrays)
+ - to automatically create table spring.jpa.hibernate.ddl-auto=update

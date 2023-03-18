@@ -1,0 +1,27 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fibo-app/fragments/header :: header">
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="hero-unit">
+        <h1>Test</h1>
+        <p>
+            Welcome to the Spring MVC Quickstart application!
+            Get started quickly by signing up.
+        </p>
+        <p>
+            <a href="/signup" th:href="@{/signup}" class="btn btn-large btn-success">Sign up</a>
+        </p>
+    </div>
+
+    <div th:replace="fibo-app/fragments/footer :: footer">&copy; 2016 The Static Templates</div>
+</div>
+
+</body>
+</html>

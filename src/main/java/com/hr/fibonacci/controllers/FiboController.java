@@ -22,7 +22,7 @@ public class FiboController {
 
         int start = (fiboForm.getStart());
         int end = (fiboForm.getEnd());
-        String fiboSeq = Fibonacci.printFibo2(start,end);
+        String fiboSeq = Fibonacci.printFiboLimits(start,end);
         System.out.println(fiboSeq);
         System.out.println(start);
         System.out.println(end);

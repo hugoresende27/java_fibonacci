@@ -12,7 +12,7 @@ public class HelloWorldController {
     public String hello(Model view){
         view.addAttribute("message", "Hello World");
         view.addAttribute("message2", "Boss");
-        view.addAttribute("fibotest", Fibonacci.printFibo2(0,100));
+        view.addAttribute("fibotest", Fibonacci.printFiboLimits(0,100));
         return "helloworld";
     }
 
