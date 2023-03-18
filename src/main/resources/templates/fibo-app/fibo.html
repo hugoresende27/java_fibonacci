@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fibo-app/fragments/header :: header">
+
+</head>
+<body class="bg-dark text-white">
+
+<div th:replace="fibo-app/fragments/topmenu :: topmenu"></div>
+
+<div class="container">
+
+  <div class="row">
+
+    <!--    LAST INPUT-->
+    <div class="col-md-4">
+      <h4>Last input</h4>
+      <p>Start <span th:text="${{fiboForm.start}}"></span></p>
+      <p>End <span th:text="${{fiboForm.end}}"></span></p>
+
+    </div>
+
+    <!--    INDEXS -->
+    <div class="col-md-4">
+
+        <form th:action="fibo-index" th:method="post" th:object="${fiboForm}" class="text-center">
+
+
+          <div class="input-group">
+            <label for="start" class="form-label">Start
+            <h5><output id="parS"></output></h5>
+            </label>
+          </div>
+
+          <div class="input-group text-center">
+            <input type="range" class="form-range" id="start" th:field="*{start}"
+                   min="0" max="100"
+                   oninput="document.getElementById('parS').innerText = parseInt(this.value);parS=parseInt(this.value)">
+
+          </div>
+
+          <div class="input-group">
+            <label for="end" class="form-label">End
+            <h5><output id="parE"></output></h5>
+            </label>
+          </div>
+
+          <div class="input-group">
+            <input type="range" class="form-range" id="end" th:field="*{end}"
+                   min="10" max="100" step="1"
+                   oninput="document.getElementById('parE').innerText = parseInt(this.value);parE=parseInt(this.value)">
+          </div>
+
+          <button type="submit">Send</button>
+
+          <div class="card text-dark" style="width: 18rem;">
+
+            <div class="card-body">
+              <h5 class="card-title">Indexes</h5>
+              <small th:text="${fiboSeqIndex}"></small>
+
+            </div>
+          </div>
+
+      </form>
+    </div>
+
+    <!--    LIMITS-->
+    <div class="col-md-4">
+        <form th:action="fibo-limit" th:method="post" th:object="${fiboForm}" class="text-center p-3 m-3">
+
+        <div class="input-group">
+          <label for="start" class="form-label">Start
+          <h5><output id="parS2"></output></h5>
+          </label>
+        </div>
+        <div class="input-group">
+          <input type="range" class="form-range" id="start2" th:field="*{start}"
+                 min="0" max="100" value="0"
+                 oninput="document.getElementById('parS2').innerText = parseInt(this.value);parS2=parseInt(this.value)"
+          >
+
+
+        </div>
+
+        <div class="input-group">
+          <label for="end" class="form-label">End
+          <h5><output id="parE2">1</output></h5>
+          </label>
+        </div>
+        <div class="input-group">
+          <input type="range" class="form-range" id="end2" th:field="*{end}"
+                 min="10" max="1000" value="1" step="1"
+                 oninput="document.getElementById('parE2').innerText = parseInt(this.value);parE2=parseInt(this.value)"
+          >
+        </div>
+
+        <button type="submit">Send</button>
+
+        <div class="card text-dark" style="width: 18rem;">
+
+          <div class="card-body">
+            <h5 class="card-title">Limits</h5>
+            <small th:text="${fiboSeqLimits}"></small>
+
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+</div>
+
+<div th:replace="fibo-app/fragments/footer :: footer">&copy; 2016 The Static Templates</div>
+</body>
+</html>

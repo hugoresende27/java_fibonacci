@@ -1,28 +1,26 @@
 
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fibo-app/fragments/header :: header">
 
 </head>
-<body>
+<body class="bg-dark text-white">
 
+<div th:replace="fibo-app/fragments/topmenu :: topmenu"></div>
 
 <div class="container">
     <div class="hero-unit">
-        <h1>Test</h1>
+
         <p>
-            Welcome to the Spring MVC Quickstart application!
-            Get started quickly by signing up.
-            test
+            Welcome to this simple JAVA app produce by hugo resende
         </p>
         <p>
             <a href="/signup" th:href="@{/signup}" class="btn btn-large btn-success">Sign up</a>
         </p>
     </div>
 
-    <div th:replace="fibo-app/fragments/footer :: footer">&copy; 2016 The Static Templates</div>
-</div>
 
+</div>
+<div th:replace="fibo-app/fragments/footer :: footer">&copy; 2016 The Static Templates</div>
 </body>
 </html>

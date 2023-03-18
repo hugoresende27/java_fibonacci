@@ -10,10 +10,15 @@ import java.security.Principal;
 @Controller
 public class HomeController {
 
+//    @GetMapping("/")
+//    String index(Principal principal, Model model){
+//        model.addAttribute("fiboForm", new FiboForm());
+////        return principal != null ? "fibo/" : "fibo-app/";
+//        return "fibo-app/index";
+//    }
+
     @GetMapping("/")
-    String index(Principal principal, Model model){
-        model.addAttribute("fiboForm", new FiboForm());
-//        return principal != null ? "fibo/" : "fibo-app/";
+    String index(){
         return "fibo-app/index";
     }
 }

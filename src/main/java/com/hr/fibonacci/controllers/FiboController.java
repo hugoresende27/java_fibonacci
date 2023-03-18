@@ -1,34 +1,67 @@
 package com.hr.fibonacci.controllers;
 
-import com.hr.fibonacci.backend.Fibonacci;
+import com.hr.fibonacci.backend.FiboFinal;
+
 import com.hr.fibonacci.models.FiboForm;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class FiboController {
 
+
     @GetMapping("/fibo")
-    public String index(Model model){
-        model.addAttribute("fiboForm", new FiboForm());
-        return "fibo";
+    public ModelAndView home(){
+
+        ModelAndView mv = new ModelAndView("fibo-app/fibo");
+        mv.addObject("fiboForm", new FiboForm());
+        return mv;
     }
 
-    @PostMapping("/fibo-send")
-    public String sendFibo(@ModelAttribute FiboForm fiboForm, Model model){
+    //original function, calling boot index and limits, deprecated
+    @PostMapping("/fibo")
+    public ModelAndView makeFibonacciSequences(@ModelAttribute FiboForm fiboForm){
 
         int start = (fiboForm.getStart());
         int end = (fiboForm.getEnd());
-        String fiboSeq = Fibonacci.printFiboLimits(start,end);
-        System.out.println(fiboSeq);
-        System.out.println(start);
-        System.out.println(end);
-        model.addAttribute("fiboForm", new FiboForm());
-        model.addAttribute("fiboSeq", fiboSeq);
+        String fiboSeqLimits = FiboFinal.printFiboLimits(start,end);
+        String fiboSeqIndex = FiboFinal.printFiboIndexes(start,end);
+        ModelAndView mv = new ModelAndView("fibo-app/fibo");
+        mv.addObject("fiboForm", new FiboForm(start,end));
+        mv.addObject("fiboSeqLimits", fiboSeqLimits);
+        mv.addObject("fiboSeqIndex", fiboSeqIndex);
+        return mv;
 
-        return "fibo";
+    }
+
+    @PostMapping("/fibo-index")
+    public ModelAndView makeFibonacciSequencesByIndex(@ModelAttribute FiboForm fiboForm){
+
+        int start = (fiboForm.getStart());
+        int end = (fiboForm.getEnd());
+        String fiboSeqIndex = FiboFinal.printFiboIndexes(start,end);
+        ModelAndView mv = new ModelAndView("fibo-app/fibo");
+        mv.addObject("fiboForm", new FiboForm(start,end));
+        mv.addObject("fiboSeqIndex", fiboSeqIndex);
+
+        return mv;
+
+
+    }
+    @PostMapping("/fibo-limit")
+    public ModelAndView makeFibonacciSequencesByLimits(@ModelAttribute FiboForm fiboForm){
+
+        int start = (fiboForm.getStart());
+        int end = (fiboForm.getEnd());
+        String fiboSeqLimits = FiboFinal.printFiboLimits(start,end);
+        ModelAndView mv = new ModelAndView("fibo-app/fibo");
+        mv.addObject("fiboForm", new FiboForm(start,end));
+        mv.addObject("fiboSeqLimits", fiboSeqLimits);
+        return mv;
+
     }
 }

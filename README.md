@@ -7,8 +7,8 @@
 - Spring Boot Dev
 
 ###  tutorial 
- - https://www.youtube.com/playlist?list=PLGRDMO4rOGcMbku5WcvZ3I8GMH__qd3I2
- - https://www.youtube.com/watch?v=arEf4OXsUXI&t=395s
+ - https://www.youtube.com/playlist?list=PLGRDMO4rOGcMbku5WcvZ3I8GMH__qd3I2 (basic thymeleaf)
+ - https://www.youtube.com/watch?v=arEf4OXsUXI&t=395s (tasks)
 
 # Notes
  - resources/static for assets like css and js
