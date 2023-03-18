@@ -58,7 +58,7 @@ public class FiboFinal {
             int compareValueE = fiboVal.compareTo(e);
 
             //if start bigger then fibo val and end smaller then fibo val
-            if (compareValueS > 0 && compareValueE < 0){
+            if (compareValueS >= 0 && compareValueE <= 0){
                 //append fibo values between limits
                 res.append(" ").append(fiboVal).append(" ");
             }

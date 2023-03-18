@@ -11,18 +11,43 @@
 
   <div class="row">
 
-    <!--    LAST INPUT-->
+    <!--    HISTORY-->
     <div class="col-md-4">
-      <h4>Last input</h4>
-      <p>Start <span th:text="${{fiboForm.start}}"></span></p>
-      <p>End <span th:text="${{fiboForm.end}}"></span></p>
+        <h4>Last input</h4>
+        <p>Start <span th:text="${{fiboForm.start}}"></span></p>
+        <p>End <span th:text="${{fiboForm.end}}"></span></p>
 
+        <hr>
+
+        <h4>History</h4>
+        <p>Performance time <span th:text="${time}"></span>ms</p>
+
+        <table class="table table-stripped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">type</th>
+                <th scope="col">start</th>
+                <th scope="col">end</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="mapEntry: ${allHistory}">
+<!--                <td th:text="${mapEntry.key}"></td>-->
+                <td th:each="item : ${mapEntry.key}" th:text="${item.key}"></td>
+                <td th:each="item : ${mapEntry.key}" th:text="${item.value}"></td>
+                <td th:each="item : ${mapEntry.value}" th:text="${item.key}"></td>
+                <td th:each="item : ${mapEntry.value}" th:text="${item.value}"></td>
+            </tr>
+
+            </tbody>
+        </table>
     </div>
 
     <!--    INDEXS -->
     <div class="col-md-4">
 
-        <form th:action="fibo-index" th:method="post" th:object="${fiboForm}" class="text-center">
+        <form th:action="fibo-index" th:method="get" th:object="${fiboForm}" class="text-center p-3 m-3">
 
 
           <div class="input-group">
@@ -50,7 +75,7 @@
                    oninput="document.getElementById('parE').innerText = parseInt(this.value);parE=parseInt(this.value)">
           </div>
 
-          <button type="submit">Send</button>
+          <button type="submit" class="btn btn-primary">Send</button>
 
           <div class="card text-dark" style="width: 18rem;">
 
@@ -66,7 +91,7 @@
 
     <!--    LIMITS-->
     <div class="col-md-4">
-        <form th:action="fibo-limit" th:method="post" th:object="${fiboForm}" class="text-center p-3 m-3">
+        <form th:action="fibo-limit" th:method="get" th:object="${fiboForm}" class="text-center p-3 m-3">
 
         <div class="input-group">
           <label for="start" class="form-label">Start
@@ -84,7 +109,7 @@
 
         <div class="input-group">
           <label for="end" class="form-label">End
-          <h5><output id="parE2">1</output></h5>
+          <h5><output id="parE2"></output></h5>
           </label>
         </div>
         <div class="input-group">
@@ -94,7 +119,7 @@
           >
         </div>
 
-        <button type="submit">Send</button>
+        <button type="submit" class="btn btn-primary">Send</button>
 
         <div class="card text-dark" style="width: 18rem;">
 
