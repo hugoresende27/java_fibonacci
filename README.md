@@ -18,3 +18,31 @@
  - @DateTimeFormat pass double bracket's
  - on view to use {{}}
  - @GetMapping("/mylink/{id}") (@PathVariable("id") use to get params from url
+
+
+------------------------------------------------------------------------
+public class Desafio {
+
+    //f(n)=f(n-1)+f(n-2)
+    //f(0) = 0
+    //f(1) = 1
+
+    public static void main(String[] args) {
+
+        System.out.println(func1(47));
+    }
+
+    public static int func1(int i) {
+        if (i == 0){
+            return 0;
+        } else if (i == 1){
+            return 1;
+        } else {
+            return func1(i-1 )+func1(i-2);
+        }
+    }
+
+    //fibonacci
+    //programa com frontend e backend para devolver a seq de fibonnaci
+
+}
