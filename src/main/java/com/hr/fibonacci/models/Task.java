@@ -9,7 +9,7 @@ public class Task {
     private Long id;
     private int cla;
     private String name;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat (pattern="yyyy-MM-dd")
     private Date date;
 
     public Task(Long id, int cla, String name, Date date) {
@@ -67,6 +67,8 @@ public class Task {
     }
 
     public void setDate(Date date) {
+
+
         this.date = date;
     }
 

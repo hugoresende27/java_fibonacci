@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fibo-app/fragments/header :: header}">
+
+</head>
+<div th:insert="~{fibo-app/fragments/topmenu :: topmenu}"></div>
+<div class="container">
+
+    <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+
+        <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="user,iStat : ${users}"
+         th:style="${iStat.odd}? 'color: red':'font-weight:bolder'"
+         th:alt-title="${iStat.even}? 'even' : 'odd'">
+        <td>
+            <a href="#" class="btn btn-primary" th:if="${user.id} == 1">Delete</a>
+            <a href="#" class="btn btn-danger" th:if="${user.id} == 3">Update</a>
+            <a href="#" class="btn btn-secondary" th:unless="${iStat.odd}">Odd</a>
+        </td>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+
+        <td th:text="${user.email}"></td>
+        <td th:text="${iStat.count}"></td>
+        <td th:text="${iStat.index}"></td>
+        <td th:text="${iStat.size}"></td>
+        <td th:text="${iStat.first}"></td>
+        <td th:text="${iStat.last}"></td>
+
+
+    </tr>
+
+    </tbody>
+    </table>
+    </div>
+
+<div th:insert="~{fibo-app/fragments/footer :: footer}">&copy; 2016 The Static Templates</div>
+</body>
+</html>

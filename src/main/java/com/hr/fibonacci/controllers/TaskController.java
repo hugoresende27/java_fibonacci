@@ -2,7 +2,6 @@ package com.hr.fibonacci.controllers;
 
 import com.hr.fibonacci.models.Task;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +25,6 @@ public class TaskController {
     @PostMapping("/task-create")
     public String create(Task task){
 
-
-
         System.out.println(task);
         //to edit task if already exist
         if (task.getId() != null){
@@ -36,6 +33,7 @@ public class TaskController {
 
         } else {
             long id = tasksList.size() + 1L; //convert 1 para tipo long
+            System.out.println(task.getDate());
             tasksList.add(new Task(id, task.getName(), task.getDate()));
 
 
@@ -67,4 +65,5 @@ public class TaskController {
 
 
     }
+
 }
