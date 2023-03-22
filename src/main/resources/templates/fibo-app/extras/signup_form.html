@@ -32,6 +32,14 @@
                     </div>
                 </div>
 
+                <div class="form-group row  m-3">
+                    <label for="inputPassConf" class="col-form-label col-4">Password Confirmation</label>
+                    <div class="col-8">
+                        <input type="password" class="form-control" id="inputPassConf" placeholder="Password"
+                               required minlength="2" maxlength="10" >
+                    </div>
+                </div>
+
                 <div class="form-group row m-3">
                     <label for="inputFirstName" class="col-form-label col-4">First Name</label>
                     <div class="col-8">
@@ -60,5 +68,21 @@
 
 </div>
 <div th:insert="~{fibo-app/fragments/footer :: footer}">&copy; 2016 The Static Templates</div>
+
+<script>
+  const passwordInput = document.getElementById('inputPass');
+  const confirmPasswordInput = document.getElementById('inputPassConf');
+
+  const validatePassword = () => {
+    if (passwordInput.value !== confirmPasswordInput.value) {
+      confirmPasswordInput.setCustomValidity('Passwords must match.');
+    } else {
+      confirmPasswordInput.setCustomValidity('');
+    }
+  };
+
+  passwordInput.addEventListener('change', validatePassword);
+  confirmPasswordInput.addEventListener('keyup', validatePassword);
+</script>
 </body>
 </html>

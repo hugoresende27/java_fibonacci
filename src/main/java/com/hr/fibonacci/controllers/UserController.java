@@ -4,6 +4,7 @@ package com.hr.fibonacci.controllers;
 import com.hr.fibonacci.models.User;
 import com.hr.fibonacci.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,14 +44,19 @@ public class UserController {
     }
 
     @PostMapping("/process_register")
-    public String processRegistration(User user){
+    public String processRegistration(User user, Model view){
 
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        String encodedPassword = encoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
         repo.save(user);
 
-        return "fibo-app/index";
+        List<User> listUsers = repo.findAll();
+
+        view.addAttribute("listUsers", listUsers);
+
+        return "fibo-app/extras/users";
     }
 
     @GetMapping("/users")
