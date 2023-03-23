@@ -50,8 +50,15 @@ public class UserController {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        repo.save(user);
 
+//        User userExist = repo.findByEmail(user.getEmail());
+//        System.out.println(userExist);
+//        if (userExist != null){
+//            repo.save(user);
+//        }
+
+
+        repo.save(user);
         List<User> listUsers = repo.findAll();
 
         view.addAttribute("listUsers", listUsers);
@@ -87,10 +94,15 @@ public class UserController {
     }
 
     @GetMapping("/user-delete/{id}")
-    private String deleteStudent(@PathVariable(name = "id") Long id){
+    private String deleteStudent(@PathVariable(name = "id") Long id, Model view){
         System.out.println("user_id : "+id);
         User user = repo.getById(id);
         repo.delete(user);
+
+        List<User> listUsers = repo.findAll();
+
+        view.addAttribute("listUsers", listUsers);
+
         return "fibo-app/extras/users";
     }
 }
